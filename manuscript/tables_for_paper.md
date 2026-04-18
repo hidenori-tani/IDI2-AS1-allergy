@@ -14,7 +14,7 @@
 | Atopic dermatitis | GSE121212 | Lesional skin / healthy control biopsy | 27 | 38 | 65 | Illumina HiSeq 2500 | Raw counts | Tsoi et al., 2019 |
 | Eosinophilic esophagitis | GSE246323 | Esophageal biopsy (baseline) | 5 | 5 | 10 | Illumina NovaSeq 6000 | Raw counts | Kleuskens et al., 2024 |
 | Eosinophilic esophagitis | GSE58640 | Esophageal biopsy | 10 | 6 | 16 | Illumina HiSeq 2000 | FPKM | Sherrill et al., 2014 |
-| Chronic rhinosinusitis with nasal polyposis | GSE136825 | Nasal polyp tissue / control inferior turbinate | 42 | 28 | 70 | Illumina HiSeq 4000 | Raw counts (featureCounts) | Wang et al., 2019 |
+| Chronic rhinosinusitis with nasal polyposis | GSE136825 | Nasal polyp tissue / control inferior turbinate | 42 | 28 | 70 | Illumina HiSeq 4000 | Raw counts (featureCounts) | Peng et al., 2019 |
 | **Combined** |  |  | **472** | **384** | **856** |  |  |  |
 
 *Three additional candidate datasets (GSE201955, GSE65832, GSE179269) were excluded because IDI2-AS1 was absent from the available processed expression matrix or because per-sample raw data could not be recovered without re-quantification from SRA. For GSE136825, paired within-patient nasal-polyp / inferior-turbinate samples (NP_IT, n = 33) were excluded so that the case/control contrast in this cohort was structurally comparable to the four other cohorts (NP tissue vs healthy-donor inferior turbinate).*
