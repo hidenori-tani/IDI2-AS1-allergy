@@ -12,13 +12,13 @@
 
 | Item | Status | Notes / action |
 |---|---|---|
-| Abstract (≤350 words) | ⚠️ 470 words | Trim before submission. Frontiers Original Research max = 350. Likely candidates for trimming: Background paragraph (currently 80 w) → 50 w; Methods detail → consolidate. |
-| Introduction (700–900 words) | ✅ 662 words | Acceptable. |
-| Materials & Methods | ✅ 935 words | Reproducibility-complete. |
+| Abstract (≤350 words) | ✅ 348 words | Trimmed in B-pass (Frontiers Original Research max = 350). |
+| Introduction (700–900 words) | ✅ ~670 words | Acceptable; includes Tani 2012 lncRNA-stability citation. |
+| Materials & Methods | ✅ ~970 words | Reproducibility-complete; software citations added in C-pass. |
 | Results | ✅ 1,159 words | 5 subsections, mapped to Fig 2–6. |
 | Discussion | ✅ 1,215 words | 5 paragraphs (Summary → Mechanism → Generalization → Clinical → Limitations). |
 | Conclusion | ✅ 142 words | Within ≤200 word target. |
-| Total body word count | ✅ 4,806 | Within typical Frontiers range (4,000–8,000). |
+| Total body word count | ✅ 4,798 | Within typical Frontiers range (4,000–8,000). |
 | Section headings use Frontiers numbering (1., 2., 3., 3.1, …) | ✅ | Already followed. |
 | Hypothesis explicitly stated | ✅ | End of Introduction (3 questions). |
 
@@ -52,10 +52,10 @@
 
 | Item | Status | Action |
 |---|---|---|
-| All in-text citations match `references.bib` | ✅ | All Author-year mentions in manuscript correspond to `.bib` entries. |
-| `[VERIFIED]` entries (8) | ✅ | Methods/software citations confirmed. |
-| `[VERIFY]` entries (13) | ⚠️ | **Phase C of this workflow** will WebFetch each. Author/year/journal must be PubMed-confirmed; XXXX placeholders for volume/page must be filled in. |
-| `[USER-OWNED]` entries (4) | ⚠️ | Tani lab papers — user fills in volume/page/DOI directly. |
+| All in-text citations match `references.bib` | ✅ | 25/25 in-text citations correspond to bib entries (verified in C-pass via grep). |
+| `[VERIFIED]` entries (8 software + methods) | ✅ | Confirmed at bib write-time. |
+| `[VERIFY]` → `[VERIFIED via CrossRef]` (13) | ✅ | All 13 confirmed via CrossRef DOI / PubMed E-utilities in C-pass. **Substantive correction:** GSE136825 cited as Wang 2019 → corrected to Peng Y et al., Eur Respir J 2019;54:1900732 (the actual GEO-linked publication). Kleuskens 2024 placeholders filled (J Allergy Clin Immunol 153:780-792). |
+| `[USER-OWNED]` entries (4) → all `[VERIFIED]` | ✅ | All 4 Tani-lab papers confirmed via PubMed/CrossRef/J-STAGE. **Author-initial corrections:** Endo Y. → Endo R.; Yagi M. → Yagi Y.; Abe K. → Abe R. (all verified against published author lists). |
 | Frontiers reference style (Vancouver / numbered) | TODO | Convert from `.bib` to Frontiers numbered format using Pandoc + Frontiers CSL on final pre-submission. |
 
 ## E. Cover letter & metadata
@@ -109,13 +109,20 @@ Backup pool (in case of declines):
 
 ## Action items in priority order
 
-1. **Trim Abstract from 470 → ≤350 words** (~25 minutes)
-2. **Verify [VERIFY] references via PubMed** (Phase C of current workflow; WebFetch-driven)
-3. **Draft Fig 1 study-design schematic** (BioRender / illustrator; 1–2 hours)
-4. **Format Table 1, 2, 3 from CSV → paper-ready** (`manuscript/tables_for_paper.md`)
-5. **Push code to public GitHub + update Methods §2.6 URL**
-6. **Confirm author affiliation + ORCID; add COI / funding / ethics block to cover letter**
-7. **Confirm 3 suggested reviewers (replace placeholders)**
-8. **Pandoc/CSL conversion to Frontiers numbered reference style**
-9. **Final read in Word format**
-10. **Submit via https://www.frontiersin.org/submission/**
+### ✅ Done (B/C self-review passes, 2026-04-18)
+- Abstract trimmed to 348 words.
+- All 25 in-text citations matched to bib; all author/year/journal/volume/pages verified.
+- Wang 2019 → Peng 2019 correction propagated through manuscript.
+- Software citations (DESeq2, apeglm, limma, metafor, ppcor, mediation, ComplexHeatmap, CIBERSORTx) added to Methods.
+- Tani-lab citations (Tani 2012, Abe 2023, Yagi 2024) integrated into Introduction/Methods at appropriate points.
+
+### Remaining action items (in priority order)
+1. **Draft Fig 1 study-design schematic** (BioRender / illustrator; 1–2 hours) — **only remaining content TODO**
+2. **Push code to public GitHub** + replace placeholder `[username]` in Methods §2.6 URL
+3. **Confirm author affiliation + ORCID** (Yokohama University of Pharmacy, [department to confirm]); add COI / funding / ethics block to cover letter
+4. **Confirm 3–5 suggested reviewers** (replace placeholders in Section G)
+5. **Format Table 1, 2, 3 from CSV → paper-ready** (`manuscript/tables_for_paper.md` already drafted)
+6. **Pandoc/CSL conversion to Frontiers numbered reference style** (`pandoc -s manuscript/full_manuscript.md --citeproc --bibliography=manuscript/references.bib --csl=frontiers.csl -o submission.docx`)
+7. **Optional: Zenodo DOI for code on tagged release** `v1.0-submission`
+8. **Final read in Word format** (sentence flow, table/figure callout order)
+9. **Submit via https://www.frontiersin.org/submission/**
