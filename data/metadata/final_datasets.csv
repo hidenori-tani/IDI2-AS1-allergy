@@ -1,0 +1,9 @@
+disease,gse_id,n_patient,n_control,tissue,platform,year,download_method,supp_file_pattern,id_type,notes
+asthma,GSE201955,88,42,bronchial epithelium,Illumina HiSeq 2500/4000,2022,GEOquery,*counts*,symbol,Ober lab Chicago. Primary BECs.
+asthma,GSE152004,388,307,nasal epithelium,Illumina HiSeq 2000,2020,GEOquery,*counts*,symbol,Sajuthi 2020 Nat Comm. 695 PR children. Nasal as airway proxy.
+atopic_dermatitis,GSE121212,27,38,skin biopsy,Illumina HiSeq 2500,2018,GEOquery,readcount,symbol,Tsoi 2018. Verified in pilot. Excel-date dup symbols handled.
+atopic_dermatitis,GSE65832,20,0,skin biopsy,Illumina Genome Analyzer IIx,2015,GEOquery,*counts*,symbol,Suarez-Farinas. Paired LS/NL. Use NL as control.
+eosinophilic_esophagitis,GSE58640,10,6,esophageal biopsy,Illumina HiSeq 2000,2014,GEOquery,*counts*,symbol,Sherrill 2014 PMID 24920534. Field-standard.
+eosinophilic_esophagitis,GSE246323,5,5,esophageal biopsy,Illumina NovaSeq 6000,2024,GEOquery,*counts*,symbol,Kleuskens 2024 PMID 37972740. Use baseline samples only.
+nasal_polyps,GSE136825,42,33,nasal polyp / turbinate,Illumina HiSeq 4000,2019,GEOquery,genecounts,ensembl,Wang 2019 PMID 31439685. Verified in pilot. featureCounts format.
+nasal_polyps,GSE179269,17,7,nasal polyp / uncinate,Illumina HiSeq 4000 + NovaSeq 6000,2022,GEOquery,*counts*,symbol,Nakayama lab Stanford. Japanese + Caucasian polyps.
