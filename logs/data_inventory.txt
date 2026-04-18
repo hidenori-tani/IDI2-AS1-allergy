@@ -1,0 +1,34 @@
+data/raw/GSE121212/:
+total 10976
+-rw-r--r--@ 1 tanihidenori  staff   5.4M Apr 18 19:22 GSE121212_readcount.txt.gz
+
+data/raw/GSE136825/:
+total 15288
+-rw-r--r--@ 1 tanihidenori  staff   7.5M Apr 18 19:25 GSE136825_genecounts_20190903.txt.gz
+
+data/raw/GSE152004/:
+total 265976
+-rw-r--r--@ 1 tanihidenori  staff   108M Apr 18 19:35 GSE152004_695_expr_norm.txt.gz
+-rw-r--r--@ 1 tanihidenori  staff    22M Apr 18 19:35 GSE152004_695_raw_counts.txt.gz
+
+data/raw/GSE179269/:
+total 591624
+-rw-r--r--@ 1 tanihidenori  staff   289M Apr 18 19:39 GSE179269_RAW.tar
+
+data/raw/GSE201955/:
+total 25592
+-rw-r--r--@ 1 tanihidenori  staff    12M Apr 18 19:34 GSE201955_RNAseq_118_processeddata.txt.gz
+
+data/raw/GSE246323/:
+total 7040
+-rw-r--r--@ 1 tanihidenori  staff   2.6M Apr 18 19:35 GSE246323_Kleuskens_RNAseq_FPKM.txt.gz
+-rw-r--r--@ 1 tanihidenori  staff   831K Apr 18 19:35 GSE246323_Kleuskens_RNAseq_readcounts.txt.gz
+
+data/raw/GSE58640/:
+total 3280
+-rw-r--r--@ 1 tanihidenori  staff   1.6M Apr 18 19:35 GSE58640_RNAseq_processed_GEOsubmission.txt.gz
+
+data/raw/GSE65832/:
+total 5192
+-rw-r--r--@ 1 tanihidenori  staff   901B Apr 18 19:35 GSE65832_RNASeqMappingCounts.txt.gz
+-rw-r--r--@ 1 tanihidenori  staff   2.5M Apr 18 19:35 GSE65832_TableSeqGenes.txt.gz

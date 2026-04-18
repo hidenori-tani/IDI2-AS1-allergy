@@ -6,4 +6,4 @@ atopic_dermatitis,GSE65832,20,0,skin biopsy,Illumina Genome Analyzer IIx,2015,GE
 eosinophilic_esophagitis,GSE58640,10,6,esophageal biopsy,Illumina HiSeq 2000,2014,GEOquery,*counts*,symbol,Sherrill 2014 PMID 24920534. Field-standard.
 eosinophilic_esophagitis,GSE246323,5,5,esophageal biopsy,Illumina NovaSeq 6000,2024,GEOquery,*counts*,symbol,Kleuskens 2024 PMID 37972740. Use baseline samples only.
 nasal_polyps,GSE136825,42,33,nasal polyp / turbinate,Illumina HiSeq 4000,2019,GEOquery,genecounts,ensembl,Wang 2019 PMID 31439685. Verified in pilot. featureCounts format.
-nasal_polyps,GSE179269,17,7,nasal polyp / uncinate,Illumina HiSeq 4000 + NovaSeq 6000,2022,GEOquery,*counts*,symbol,Nakayama lab Stanford. Japanese + Caucasian polyps.
+nasal_polyps,GSE179269,2,0,nasal polyp,scRNA-seq 10x Genomics,2022,EXCLUDED,N/A,N/A,EXCLUDED: actually scRNA-seq (10x mtx format) with only 2 samples. Misidentified during candidate selection. Drop from bulk DESeq2 pipeline.
