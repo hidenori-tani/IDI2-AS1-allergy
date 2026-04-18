@@ -1,0 +1,274 @@
+% =============================================================================
+% References for IDI2-AS1 cross-disease bulk transcriptome analysis manuscript.
+%
+% CONFIDENCE LEGEND
+%   [VERIFIED]      - I am confident in author / year / journal / title.
+%   [VERIFY]        - High-confidence guess based on training data; please confirm
+%                     against PubMed / DOI before submission. Authors and year are
+%                     plausible but should be checked. Volume/page placeholders
+%                     marked with XXXX must be filled in.
+%   [USER-OWNED]    - Tani et al. publications (these you can confirm directly).
+%
+% Recommended workflow before submission:
+%   1. Open each [VERIFY] entry, look up the paper on PubMed by first author + year
+%      + first 5 words of title, and replace XXXX placeholders.
+%   2. Add any missing citations the journal asks for during proof.
+% =============================================================================
+
+% ---- USER-OWNED PRIOR WORK ----
+
+@article{Endo2025_IDI2AS1,
+  author  = {Endo, Y. and Kurisu, R. and Tani, H.},   % [USER-OWNED]
+  title   = {Long noncoding {RNA} {IDI2-AS1} modulates the expression of interleukin 5 in human cells},
+  journal = {Biochemical and Biophysical Research Communications},
+  year    = {2025},
+  volume  = {XXXX},
+  pages   = {XXXX},
+  doi     = {10.1016/j.bbrc.2025.XXXXXX}
+}
+
+@article{Yagi2024_polyIC,
+  author  = {Yagi, M. and Abe, K. and Tani, H.},   % [USER-OWNED]
+  title   = {Effects of poly({I:C}) on long noncoding {RNA} expression},
+  journal = {Biological and Pharmaceutical Bulletin},
+  year    = {2024},
+  volume  = {XXXX},
+  pages   = {XXXX}
+}
+
+@article{Abe2023_LPS,
+  author  = {Abe, K. and Yagi, M. and Tani, H.},   % [USER-OWNED]
+  title   = {{LPS}-responsive long noncoding {RNAs} in human cells},
+  journal = {{BPB} Reports},
+  year    = {2023},
+  volume  = {XXXX},
+  pages   = {XXXX}
+}
+
+@article{Tani2012_GenomeRes,
+  author  = {Tani, H. and others},                 % [USER-OWNED]
+  title   = {Genome-wide determination of {RNA} stability reveals hundreds of short-lived noncoding transcripts in mammals},
+  journal = {Genome Research},
+  year    = {2012},
+  volume  = {XXXX},
+  pages   = {XXXX}
+}
+
+% ---- DATASET PRIMARY PAPERS ----
+
+@article{Sajuthi2020_GSE152004,
+  author  = {Sajuthi, S. P. and DeFord, P. and Jackson, N. D. and others},   % [VERIFY]
+  title   = {Type 2 and interferon inflammation regulate {SARS-CoV-2} entry factor expression in the airway epithelium},
+  journal = {Nature Communications},
+  year    = {2020},
+  volume  = {11},
+  pages   = {5139},
+  doi     = {10.1038/s41467-020-18781-2}
+}
+
+@article{Tsoi2018_GSE121212,
+  author  = {Tsoi, L. C. and Rodriguez, E. and Degenhardt, F. and others},   % [VERIFY]
+  title   = {Atopic dermatitis is an {IL-13}-dominant disease with greater molecular heterogeneity compared to psoriasis},
+  journal = {Journal of Investigative Dermatology},
+  year    = {2019},
+  volume  = {139},
+  pages   = {1480--1489},
+  doi     = {10.1016/j.jid.2018.12.018}
+}
+
+@article{Sherrill2014_GSE58640,
+  author  = {Sherrill, J. D. and Kc, K. and Wu, D. and others},   % [VERIFY]
+  title   = {Desmoglein-1 regulates esophageal epithelial barrier function and immune responses in eosinophilic esophagitis},
+  journal = {Mucosal Immunology},
+  year    = {2014},
+  volume  = {7},
+  pages   = {718--729},
+  doi     = {10.1038/mi.2013.90}
+}
+
+@article{Kleuskens2024_GSE246323,
+  author  = {Kleuskens, M. T. A. and others},                       % [VERIFY]
+  title   = {Transcriptomic profiling of pediatric eosinophilic esophagitis biopsies},
+  journal = {XXXX},
+  year    = {2024},
+  volume  = {XXXX},
+  pages   = {XXXX}
+}
+
+@article{Wang2019_GSE136825,
+  author  = {Wang, W. and Gao, Z. and Wang, H. and others},        % [VERIFY]
+  title   = {Transcriptome analysis reveals distinct gene expression profiles in eosinophilic and noneosinophilic chronic rhinosinusitis with nasal polyps},
+  journal = {Journal of Allergy and Clinical Immunology},
+  year    = {2019},
+  volume  = {XXXX},
+  pages   = {XXXX}
+}
+
+% ---- METHODS / SOFTWARE ----
+
+@article{Love2014_DESeq2,
+  author  = {Love, M. I. and Huber, W. and Anders, S.},            % [VERIFIED]
+  title   = {Moderated estimation of fold change and dispersion for {RNA-seq} data with {DESeq2}},
+  journal = {Genome Biology},
+  year    = {2014},
+  volume  = {15},
+  pages   = {550},
+  doi     = {10.1186/s13059-014-0550-8}
+}
+
+@article{Zhu2019_apeglm,
+  author  = {Zhu, A. and Ibrahim, J. G. and Love, M. I.},          % [VERIFIED]
+  title   = {Heavy-tailed prior distributions for sequence count data: removing the noise and preserving large differences},
+  journal = {Bioinformatics},
+  year    = {2019},
+  volume  = {35},
+  pages   = {2084--2092},
+  doi     = {10.1093/bioinformatics/bty895}
+}
+
+@article{Ritchie2015_limma,
+  author  = {Ritchie, M. E. and Phipson, B. and Wu, D. and Hu, Y. and Law, C. W. and Shi, W. and Smyth, G. K.},   % [VERIFIED]
+  title   = {{limma} powers differential expression analyses for {RNA-sequencing} and microarray studies},
+  journal = {Nucleic Acids Research},
+  year    = {2015},
+  volume  = {43},
+  pages   = {e47},
+  doi     = {10.1093/nar/gkv007}
+}
+
+@article{Viechtbauer2010_metafor,
+  author  = {Viechtbauer, W.},                                     % [VERIFIED]
+  title   = {Conducting meta-analyses in {R} with the {metafor} package},
+  journal = {Journal of Statistical Software},
+  year    = {2010},
+  volume  = {36},
+  pages   = {1--48},
+  doi     = {10.18637/jss.v036.i03}
+}
+
+@article{Tingley2014_mediation,
+  author  = {Tingley, D. and Yamamoto, T. and Hirose, K. and Keele, L. and Imai, K.},   % [VERIFIED]
+  title   = {{mediation}: {R} package for causal mediation analysis},
+  journal = {Journal of Statistical Software},
+  year    = {2014},
+  volume  = {59},
+  pages   = {1--38},
+  doi     = {10.18637/jss.v059.i05}
+}
+
+@article{Kim2015_ppcor,
+  author  = {Kim, S.},                                             % [VERIFIED]
+  title   = {{ppcor}: an {R} package for a fast calculation to semi-partial correlation coefficients},
+  journal = {Communications for Statistical Applications and Methods},
+  year    = {2015},
+  volume  = {22},
+  pages   = {665--674},
+  doi     = {10.5351/CSAM.2015.22.6.665}
+}
+
+@article{Gu2016_ComplexHeatmap,
+  author  = {Gu, Z. and Eils, R. and Schlesner, M.},               % [VERIFIED]
+  title   = {{Complex} heatmaps reveal patterns and correlations in multidimensional genomic data},
+  journal = {Bioinformatics},
+  year    = {2016},
+  volume  = {32},
+  pages   = {2847--2849},
+  doi     = {10.1093/bioinformatics/btw313}
+}
+
+@article{Newman2019_CIBERSORTx,
+  author  = {Newman, A. M. and Steen, C. B. and Liu, C. L. and Gentles, A. J. and Chaudhuri, A. A. and Scherer, F. and Khodadoust, M. S. and Esfahani, M. S. and Luca, B. A. and Steiner, D. and Diehn, M. and Alizadeh, A. A.},   % [VERIFIED]
+  title   = {Determining cell type abundance and expression from bulk tissues with digital cytometry},
+  journal = {Nature Biotechnology},
+  year    = {2019},
+  volume  = {37},
+  pages   = {773--782},
+  doi     = {10.1038/s41587-019-0114-2}
+}
+
+% ---- LNCRNA BIOLOGY REVIEWS ----
+
+@article{Mattick2023_lncRNAreview,
+  author  = {Mattick, J. S. and Amaral, P. P. and Carninci, P. and others},   % [VERIFY]
+  title   = {Long non-coding {RNAs}: definitions, functions, challenges and recommendations},
+  journal = {Nature Reviews Molecular Cell Biology},
+  year    = {2023},
+  volume  = {24},
+  pages   = {430--447},
+  doi     = {10.1038/s41580-022-00566-8}
+}
+
+@article{Statello2021_lncRNAfunctions,
+  author  = {Statello, L. and Guo, C.-J. and Chen, L.-L. and Huarte, M.},      % [VERIFY]
+  title   = {Gene regulation by long non-coding {RNAs} and its biological functions},
+  journal = {Nature Reviews Molecular Cell Biology},
+  year    = {2021},
+  volume  = {22},
+  pages   = {96--118},
+  doi     = {10.1038/s41580-020-00315-9}
+}
+
+@article{Cabili2011_lincRNAs,
+  author  = {Cabili, M. N. and Trapnell, C. and Goff, L. and Koziol, M. and Tazon-Vega, B. and Regev, A. and Rinn, J. L.},   % [VERIFY]
+  title   = {Integrative annotation of human large intergenic noncoding {RNAs} reveals global properties and specific subclasses},
+  journal = {Genes \& Development},
+  year    = {2011},
+  volume  = {25},
+  pages   = {1915--1927},
+  doi     = {10.1101/gad.17446611}
+}
+
+% ---- IL5 AXIS / ANTI-EOSINOPHIL BIOLOGICS (clinical context for Discussion) ----
+% NOTE: please check authors/year/volume against PubMed before submission.
+
+@article{Bel2014_mepolizumab,
+  author  = {Bel, E. H. and Wenzel, S. E. and Thompson, P. J. and others},   % [VERIFY]
+  title   = {Oral glucocorticoid-sparing effect of mepolizumab in eosinophilic asthma},
+  journal = {New England Journal of Medicine},
+  year    = {2014},
+  volume  = {371},
+  pages   = {1189--1197},
+  doi     = {10.1056/NEJMoa1403291}
+}
+
+@article{Bachert2019_mepoCRSwNP,
+  author  = {Bachert, C. and Sousa, A. R. and Lund, V. J. and others},      % [VERIFY]
+  title   = {Reduced need for surgery in severe nasal polyposis with mepolizumab},
+  journal = {Journal of Allergy and Clinical Immunology},
+  year    = {2017},
+  volume  = {140},
+  pages   = {1024--1031},
+  doi     = {10.1016/j.jaci.2017.05.044}
+}
+
+@article{Hirano2019_EoEbiologic,
+  author  = {Hirano, I. and Collins, M. H. and Assouline-Dayan, Y. and others},   % [VERIFY]
+  title   = {{RPC4046}, a monoclonal antibody against {IL-13}, reduces histologic and endoscopic activity in patients with eosinophilic esophagitis},
+  journal = {Gastroenterology},
+  year    = {2019},
+  volume  = {156},
+  pages   = {592--603},
+  doi     = {10.1053/j.gastro.2018.10.051}
+}
+
+@article{Lambrecht2019_type2review,
+  author  = {Lambrecht, B. N. and Hammad, H. and Fahy, J. V.},               % [VERIFY]
+  title   = {The cytokines of asthma},
+  journal = {Immunity},
+  year    = {2019},
+  volume  = {50},
+  pages   = {975--991},
+  doi     = {10.1016/j.immuni.2019.03.018}
+}
+
+% ---- SINGLE-CELL FOLLOW-UP ANCHORS (cited in Discussion §4.3) ----
+
+@article{Travaglini2020_lungatlas,
+  author  = {Travaglini, K. J. and Nabhan, A. N. and Penland, L. and others},   % [VERIFY]
+  title   = {A molecular cell atlas of the human lung from single-cell {RNA} sequencing},
+  journal = {Nature},
+  year    = {2020},
+  volume  = {587},
+  pages   = {619--625},
+  doi     = {10.1038/s41586-020-2922-4}
+}
