@@ -10,6 +10,11 @@ results/intermediate/
 .Rhistory
 .RData
 .Rproj.user/
+Rplots.pdf
+
+# Pandoc intermediate (regenerated from manuscript/build_pandoc.R)
+manuscript/full_manuscript_pandoc.md
+/full_manuscript.md
 renv/library/
 renv/local/
 renv/cellar/

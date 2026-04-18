@@ -38,3 +38,4 @@ Yokohama University of Pharmacy
 601 Matano-cho, Totsuka-ku, Yokohama 245-0066, Japan
 hidenori.tani@yok.hamayaku.ac.jp
 +81-45-859-1300
+ORCID: 0000-0001-6390-4136
