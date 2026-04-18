@@ -1,0 +1,2 @@
+gene,log2FC,lfcSE,pvalue,padj,method,dataset,disease
+ENSG00000260196,-0.03649719442012906,0.1446023793227536,0.09241021513705203,0.49887807935134026,DESeq2-apeglm,GSE246323,eosinophilic_esophagitis
