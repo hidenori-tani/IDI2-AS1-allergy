@@ -1,0 +1,38 @@
+# Raw and large processed data
+data/raw/
+data/processed/*.rds
+data/processed/*.h5
+
+# Intermediate analysis outputs
+results/intermediate/
+
+# R session
+.Rhistory
+.RData
+.Rproj.user/
+renv/library/
+renv/local/
+renv/cellar/
+renv/lock/
+renv/python/
+renv/staging/
+
+# Python
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/*.log
+
+# Editor
+.vscode/
+.idea/
