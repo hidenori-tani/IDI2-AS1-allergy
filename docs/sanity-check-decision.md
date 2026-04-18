@@ -109,3 +109,42 @@ Three-paragraph arc:
 > **(3) Deconvolution implicates cell-composition confounding; partial correlation isolates the within-effector regulatory signature, reconciling cell-line and tissue findings and motivating single-cell follow-up.**
 
 This is now closer to a full mechanistic story, not a simple confirmation paper.
+
+---
+
+## Phase 5 update — cell-type adjustment & mediation (2026-04-18)
+
+CIBERSORTx web-upload deferred; instead used **literature-grade marker-signature scores** for the same biological question, computed locally in [code/R/09_celltype_adjusted_correlation.R](../code/R/09_celltype_adjusted_correlation.R):
+
+- **Eosinophil panel** (n=7): CLC, EPX, PRG2, RNASE2, RNASE3, SIGLEC8, CCR3
+- **Th2/type-2 panel** (n=6): GATA3, IL4R, CCR4, PTGDR2, IL13, IL17RB
+- All 13 markers detected in all 4 raw-count datasets and the FPKM dataset.
+
+### Result — cell-type-adjusted IDI2-AS1↔IL5
+
+| Dataset | n | raw ρ | raw p | **adj ρ** | adj p |
+|:---|:-:|:---:|:---:|:---:|:---:|
+| **GSE152004 (asthma)** | **695** | **+0.109** | **0.004** | **+0.052** | **0.17** |
+| GSE58640 (EoE) | 16 | +0.49 | 0.054 | +0.42 | 0.13 |
+| GSE136825 (CRSwNP) | 70 | +0.085 | 0.48 | +0.135 | 0.27 |
+| GSE121212 (AD) | 65 | +0.06 | 0.63 | +0.010 | 0.94 |
+
+### Result — formal causal-mediation test (asthma, n=695)
+
+`mediate()` with bootstrap (1000 sims):
+- **ACME (indirect, via eosinophil signature) = +0.109, 95% CI [0.041, 0.176], p = 0.002**
+- ADE (direct, IDI2-AS1→IL5 holding eosinophil constant) = +0.012, 95% CI [-0.075, +0.106], p = 0.76
+- **Proportion mediated = 0.90 (~90%)**
+
+→ **The positive tissue-bulk IDI2-AS1↔IL5 association is, statistically, almost entirely explained by eosinophil composition.** Once cell-type proportion is held constant, the within-tissue residual association vanishes (p = 0.76).
+
+This is the **decisive piece of evidence** that the BBRC2025 cell-line mechanism is not detectable in tissue bulk because the bulk signal is dominated by cell-composition co-variation. It is also a positive, formally testable claim — not a negative ("we couldn't find it") result. The plain-language version:
+
+> *"In the largest tissue cohort tested (asthma, n = 695 nasal-epithelial samples), 90 % of the apparent IDI2-AS1↔IL5 covariation is mediated by eosinophil abundance. The within-cell-type direct effect that BBRC2025 demonstrates in T-cell line cannot be recovered at this granularity, motivating single-cell follow-up."*
+
+### What's left (in plan order)
+
+- Phase 6 lncRNA + cytokine panel heatmaps — done.
+- Phase 7 in-silico mechanism (POSTAR3 RBP candidates, JASPAR IL5 promoter scan) — requires manual web look-ups.
+- Phase 8 figure compilation — mostly produced already.
+- Phase 9 manuscript writing.
