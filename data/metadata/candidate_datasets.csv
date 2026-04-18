@@ -1,0 +1,9 @@
+disease,gse_id,n_patient,n_control,tissue,platform,year,has_metadata,priority,notes
+asthma,GSE201955,88,42,bronchial epithelium,Illumina HiSeq 2500/4000,2022,partial,1,Primary BECs from Carole Ober lab Chicago. Processed counts available as supplementary file. Maternal asthma history phenotyped.
+asthma,GSE152004,388,307,nasal epithelium,Illumina HiSeq 2000,2020,partial,2,Sajuthi et al Nat Comm 2020. 695 Puerto Rican children. Nasal epithelium as proxy for asthma airway. Raw counts and normalized expression available.
+atopic_dermatitis,GSE121212,27,38,skin biopsy,Illumina HiSeq 2500,2018,partial,1,Tsoi et al. AD vs healthy + PSO comparator. Raw counts (readcount.txt.gz) available. 125bp paired-end.
+atopic_dermatitis,GSE65832,20,0,skin biopsy,Illumina Genome Analyzer IIx,2015,partial,2,Suarez-Farinas et al. Paired AD lesional vs non-lesional (no healthy control). Use non-lesional as within-patient control.
+eosinophilic_esophagitis,GSE58640,10,6,esophageal biopsy,Illumina HiSeq 2000,2014,partial,1,Sherrill et al. PMID 24920534. Active EoE vs healthy. Field-standard EoE RNA-seq dataset. Small but seminal.
+eosinophilic_esophagitis,GSE246323,5,5,esophageal biopsy,Illumina NovaSeq 6000,2024,partial,2,Kleuskens et al. PMID 37972740. Baseline + post-injection. Use baseline samples only.
+nasal_polyps,GSE136825,42,33,nasal polyp / turbinate,Illumina HiSeq 4000,2019,partial,1,Wang et al. PMID 31439685. Largest CRSwNP RNA-seq. Gene counts available (genecounts_20190903.txt.gz).
+nasal_polyps,GSE179269,17,7,nasal polyp / uncinate process,Illumina HiSeq 4000 + NovaSeq 6000,2022,partial,2,Nakayama lab Stanford. Japanese + Caucasian polyps. Bulk RNA-seq.
