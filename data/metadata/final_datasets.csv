@@ -1,9 +1,9 @@
-disease,gse_id,n_patient,n_control,tissue,platform,year,download_method,supp_file_pattern,id_type,notes
-asthma,GSE201955,88,42,bronchial epithelium,Illumina HiSeq 2500/4000,2022,GEOquery,*counts*,symbol,Ober lab Chicago. Primary BECs.
-asthma,GSE152004,388,307,nasal epithelium,Illumina HiSeq 2000,2020,GEOquery,*counts*,symbol,Sajuthi 2020 Nat Comm. 695 PR children. Nasal as airway proxy.
-atopic_dermatitis,GSE121212,27,38,skin biopsy,Illumina HiSeq 2500,2018,GEOquery,readcount,symbol,Tsoi 2018. Verified in pilot. Excel-date dup symbols handled.
-atopic_dermatitis,GSE65832,20,0,skin biopsy,Illumina Genome Analyzer IIx,2015,GEOquery,*counts*,symbol,Suarez-Farinas. Paired LS/NL. Use NL as control.
-eosinophilic_esophagitis,GSE58640,10,6,esophageal biopsy,Illumina HiSeq 2000,2014,GEOquery,*counts*,symbol,Sherrill 2014 PMID 24920534. Field-standard.
-eosinophilic_esophagitis,GSE246323,5,5,esophageal biopsy,Illumina NovaSeq 6000,2024,GEOquery,*counts*,symbol,Kleuskens 2024 PMID 37972740. Use baseline samples only.
-nasal_polyps,GSE136825,42,33,nasal polyp / turbinate,Illumina HiSeq 4000,2019,GEOquery,genecounts,ensembl,Wang 2019 PMID 31439685. Verified in pilot. featureCounts format.
-nasal_polyps,GSE179269,2,0,nasal polyp,scRNA-seq 10x Genomics,2022,EXCLUDED,N/A,N/A,EXCLUDED: actually scRNA-seq (10x mtx format) with only 2 samples. Misidentified during candidate selection. Drop from bulk DESeq2 pipeline.
+disease,gse_id,n_patient,n_control,tissue,platform,year,download_method,supp_file_pattern,id_type,data_type,analysis_method,status,notes
+asthma,GSE152004,388,307,nasal epithelium,Illumina HiSeq 2000,2020,GEOquery,raw_counts,symbol,raw_counts,DESeq2,USE,Sajuthi 2020 Nat Comm. 695 PR children. Nasal as airway proxy.
+asthma,GSE201955,88,42,bronchial epithelium,Illumina HiSeq 2500/4000,2022,GEOquery,processed,symbol,log2_normalized,N/A,EXCLUDED,IDI2-AS1 not in 13758-gene filtered processed file. Cannot recover without re-quantifying from SRA.
+atopic_dermatitis,GSE121212,27,38,skin biopsy,Illumina HiSeq 2500,2018,GEOquery,readcount,symbol,raw_counts,DESeq2,USE,Tsoi 2018. Excel-date dup symbols handled. IDI2-AS1 low expression (mean 2.84 reads).
+atopic_dermatitis,GSE65832,20,0,skin biopsy,Illumina Genome Analyzer IIx,2015,GEOquery,DEG_table,symbol,DEG_results_only,N/A,EXCLUDED,No per-sample raw counts. Only pre-computed DEG table (logFC/P.Value) and broken-line file. Useless for our pipeline.
+eosinophilic_esophagitis,GSE246323,5,5,esophageal biopsy,Illumina NovaSeq 6000,2024,GEOquery,readcounts,ensembl,raw_counts,DESeq2,USE,Kleuskens 2024. Use baseline P*_bsl1 + C02-C06. Raw counts confirmed.
+eosinophilic_esophagitis,GSE58640,10,6,esophageal biopsy,Illumina HiSeq 2000,2014,GEOquery,FPKM,symbol,fpkm_normalized,limma-trend,USE,Sherrill 2014. FPKM-scale (GAPDH=1300). limma-trend on log2(FPKM+1).
+nasal_polyps,GSE136825,42,33,nasal polyp / turbinate,Illumina HiSeq 4000,2019,GEOquery,genecounts,ensembl,raw_counts,DESeq2,USE,Wang 2019. featureCounts format. IDI2-AS1 strong (mean 20.34 reads).
+nasal_polyps,GSE179269,2,0,nasal polyp,scRNA-seq 10x Genomics,2022,EXCLUDED,N/A,N/A,scRNA-seq,N/A,EXCLUDED,scRNA-seq with only 2 samples. Misidentified during candidate selection.
