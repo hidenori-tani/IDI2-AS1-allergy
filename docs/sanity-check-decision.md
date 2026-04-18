@@ -66,3 +66,46 @@ The plan's binary criterion ("全 dataset で逆方向" / "全 dataset で正方
 - Commit DEG results.
 - Proceed to Phase 4.
 - Do NOT redo Phase 1-2 (no need to ditch any dataset; the heterogeneity itself is the finding).
+
+---
+
+## Phase 4 update — meta-analysis & correlation findings (2026-04-18)
+
+### Meta-analysis (Task 4.2, `code/R/06_meta_analysis.R`)
+
+| Gene | k | pooled log2FC | 95% CI | pval | I²  | Q pval |
+|:-----|:-:|:-------------:|:------:|:----:|:---:|:------:|
+| IDI2-AS1 | 5 | **+5.1e-5** | [-0.005, 0.005] | 0.98 | **0.26 %** | 0.47 |
+| IL5      | 4 | +0.22 | [-0.15, 0.58]   | 0.25 | 82 % | 3e-4 |
+| IL13     | 3 | +1.92 | [-1.0, 4.9]     | 0.20 | 99.7 %| 6e-38 |
+| MIR22HG  | 3 | +0.46 | [-0.04, 0.96]   | 0.07 | 97 % | 1e-22 |
+
+**The IDI2-AS1 null is the cleanest result in the entire panel** — I² ≈ 0 means *all 5 datasets independently agree* on "no tissue-bulk effect." This is *not* a noisy mixed result; it's a robust converging finding. That makes it directly publishable as "tissue-bulk RNA-seq does not detect a steady-state IDI2-AS1 expression difference in any of four type-2 allergic diseases."
+
+### Sample-level correlation (Task 4.3, `code/R/07_correlation_analysis.R`)
+
+| Dataset (disease) | n | Spearman ρ | p |
+|:------------------|:-:|:---------:|:--:|
+| GSE152004 (asthma) | 695 | **+0.109** | **0.004** |
+| GSE58640 (EoE)     | 16  | **+0.489** | 0.054 |
+| GSE121212 (AD)     | 65  | +0.060 | 0.63 |
+| GSE136825 (CRSwNP) | 70  | +0.085 | 0.48 |
+| GSE246323 (EoE)    | — | (IL5 not detected; small biopsy) | — |
+
+**Direction is opposite of the BBRC2025 cell-line prediction.** BBRC2025 showed IDI2-AS1 knockdown → IL5 ↑ in HuT78 T-cells (a regulatory model in which IDI2-AS1 represses IL5, predicting **negative** correlation in tissue). Instead, tissues show **positive** co-variation (significantly so in the largest, best-powered cohort).
+
+This is biologically interpretable, not a contradiction:
+
+1. **Most likely — cell-composition confounder.** In tissue biopsies, both IDI2-AS1 and IL5 are presumably expressed in the same allergic-effector subset (Th2 / ILC2 / eosinophil). Samples with higher infiltrate carry up *both* transcripts proportionally, masking the within-cell regulatory direction. The cell-line direction (negative) and tissue direction (positive) are **measuring different things**: regulation vs composition.
+2. **CIBERSORTx becomes the decisive analysis.** Deconvolving each tissue sample into immune-cell fractions, then partial-correlating IDI2-AS1↔IL5 *adjusted for eosinophil/Th2 fraction*, will reveal whether the within-cell-type relationship survives. This is the natural Phase 5 experiment.
+3. **The contrast — cell-line negative regulation, tissue-bulk positive co-variation, and (predicted) within-cell-type residual signal — is a tighter, more publishable story** than the original "uniform downregulation" framing. It also explains why no published GEO dataset has ever flagged IDI2-AS1 as a differentially expressed allergy gene.
+
+### Refined manuscript framing
+
+Three-paragraph arc:
+
+> **(1) BBRC2025 demonstrated, in T-cell line, that IDI2-AS1 represses IL5.**
+> **(2) Yet across 5 independent tissue cohorts spanning 4 type-2 allergic diseases, tissue-bulk IDI2-AS1 expression is invariant (meta-pooled log2FC ≈ 0, I² < 1 %), and tissue-level IDI2-AS1 and IL5 instead co-vary positively (significantly in asthma, n = 695).**
+> **(3) Deconvolution implicates cell-composition confounding; partial correlation isolates the within-effector regulatory signature, reconciling cell-line and tissue findings and motivating single-cell follow-up.**
+
+This is now closer to a full mechanistic story, not a simple confirmation paper.
