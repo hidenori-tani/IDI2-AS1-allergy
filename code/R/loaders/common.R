@@ -19,7 +19,19 @@ IL5_IDS     <- c("IL5", "ENSG00000113525")
 #' featureCounts output. Handles missing first-column header,
 #' Excel-date duplicate symbols, and metadata columns.
 load_count_table <- function(path) {
-  raw <- readr::read_tsv(path, show_col_types = FALSE, guess_max = 5000)
+  # Some GEO headers omit the leading delimiter for the gene-name column,
+  # so the header has N fields and data rows have N+1. Detect this and
+  # re-read with col_names=FALSE + explicit names so we don't silently
+  # lose a sample column.
+  con <- gzfile(path, "rt"); on.exit(close(con), add = TRUE)
+  hdr  <- strsplit(readLines(con, n = 1), "\t", fixed = TRUE)[[1]]
+  row1 <- strsplit(readLines(con, n = 1), "\t", fixed = TRUE)[[1]]
+  if (length(row1) == length(hdr) + 1) {
+    raw <- readr::read_tsv(path, show_col_types = FALSE, guess_max = 5000,
+                            skip = 1, col_names = c("gene_id", hdr))
+  } else {
+    raw <- readr::read_tsv(path, show_col_types = FALSE, guess_max = 5000)
+  }
   gene_col <- colnames(raw)[1]
   meta <- intersect(colnames(raw), c("Chr","Start","End","Strand","Length"))
   if (length(meta) >= 3) raw <- raw[, !(colnames(raw) %in% meta), drop = FALSE]
