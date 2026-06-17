@@ -56,7 +56,7 @@ ds <- list(
   list("Atopic dermatitis\nGSE121212 (n=65)\nSkin biopsy", "#FADBD8"),
   list("EoE\nGSE246323 (n=10)\nEsophagus",                 "#FCF3CF"),
   list("EoE\nGSE58640 (n=16)\nEsophagus",                  "#FCF3CF"),
-  list("CRSwNP\nGSE136825 (n=70)\nNasal polyp",            "#D5F5E3")
+  list("CRSwNP\nGSE136825 (n=70)\nPolyp vs IT control",    "#D5F5E3")
 )
 xs <- seq(0.10, 0.90, length.out = 5)
 for (i in seq_along(ds)) {
@@ -129,10 +129,10 @@ grid.text("STAGE 4 - Principal finding",
 finding_lines <- c(
   "Tissue-bulk IDI2-AS1 expression is invariant in every cohort (pooled log2FC ~ 0; I2 = 0.26%).",
   "Sample-level IDI2-AS1 vs IL5 covariation is POSITIVE - opposite to the in vitro repressive direction.",
-  "Effect decomposition in the asthma cohort attributes the majority of the covariation to eosinophils:",
-  "~90% (marker signature) and ~70% (independent xCell deconvolution), both p <= 0.006; direct effect ~ 0.",
-  "=> The published in vitro IDI2-AS1 -> IL5 axis is MASKED, not contradicted, by bulk RNA-seq.",
-  "=> Single-cell follow-up is the natural next step (a hypothesis, not a validation)."
+  "Effect decomposition (asthma) attributes the majority of the covariation to eosinophils:",
+  "~90% (marker) and ~70% (independent xCell), both p <= 0.006; within-tissue residual component ~ 0.",
+  "=> Bulk RNA-seq is compatible with compositional masking of the proposed in vitro axis,",
+  "=> not its refutation; single-cell follow-up is required (a hypothesis, not a validation)."
 )
 
 # Outer green box

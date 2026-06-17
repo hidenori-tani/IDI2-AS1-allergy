@@ -20,7 +20,7 @@ Tel: +81-45-859-1300
 
 **Article type.** Methods / Original research (methodology).
 
-**Word count (main text — Introduction + Methods + Results + Discussion — excluding abstract, key points, figure legends, declarations, and references).** ~ 4,400 words
+**Word count (main text — Introduction + Methods + Results + Discussion — excluding abstract, key points, figure legends, declarations, and references).** ~ 5,900 words
 
 **Number of figures.** 6 main + 1 supplementary
 
