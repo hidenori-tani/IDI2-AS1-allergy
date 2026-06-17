@@ -71,6 +71,15 @@ We demonstrate the framework on *IDI2-AS1*, a recently identified in vitro repre
 
 We applied the pipeline to five such cohorts (combined *n* = 856) to ask three questions: (i) is bulk *IDI2-AS1* differentially expressed in any of these tissues; (ii) does sample-level *IDI2-AS1* abundance covary with *IL5* in the direction predicted by the in vitro repression model; and (iii) when the bulk signal departs from the in vitro prediction, can the cell-composition-adjustment step recover an interpretation consistent with the in vitro mechanism, by partitioning the bulk association into composition-associated and residual components? Our purpose is not to relitigate the in vitro *IDI2-AS1* → *IL5* mechanism, which we treat as an independent finding [@Endo2025_IDI2AS1], but to use this candidate as a transparent test case in which the pipeline must reconcile a bulk-tissue null with an in vitro per-cell effect of known direction. The framework that emerges is directly applicable to other low-abundance, cell-type-restricted lncRNA candidates evaluated against bulk-tissue cohorts.
 
+### Statement of Significance
+
+| | |
+|---|---|
+| **Problem or Issue** | Re-using public bulk RNA-seq to evaluate low-abundance, cell-type-restricted long noncoding RNAs is error-prone: bulk readouts conflate per-cell regulation with cell-composition shifts, so a null or sign-inverted result can be mis-read as evidence against in vivo function. |
+| **What is Already Known** | The component methods—differential expression, meta-analysis, deconvolution, partial correlation, effect decomposition—are established but applied ad hoc; no standardized, reusable workflow distinguishes compositional masking from a genuine absence of regulation. |
+| **What This Paper Adds** | An openly released pipeline that statistically partitions a bulk feature–target association into composition-attributable and residual components, with a cross-method robustness check and a confounding-sensitivity analysis; demonstrated on IDI2-AS1/IL5 (asthma, *n* = 695: ~70–90% eosinophil-attributable). |
+| **Who Would Benefit** | Biomedical-informatics researchers and computational biologists re-analyzing public bulk transcriptomes for cell-type-restricted regulators, who must avoid mis-reading bulk nulls as biological absence. |
+
 
 ## Methods
 
