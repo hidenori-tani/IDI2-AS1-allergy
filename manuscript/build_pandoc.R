@@ -35,6 +35,8 @@ cite_map <- list(
   "Kim, 2015"                = "Kim2015_ppcor",
   "Gu et al., 2016"          = "Gu2016_ComplexHeatmap",
   "Newman et al., 2019"      = "Newman2019_CIBERSORTx",
+  "Aran et al., 2017"        = "Aran2017_xCell",
+  "Imai et al., 2010"        = "Imai2010_StatSci",
   "Mattick et al., 2023"     = "Mattick2023_lncRNAreview",
   "Statello et al., 2021"    = "Statello2021_lncRNAfunctions",
   "Cabili et al., 2011"      = "Cabili2011_lincRNAs",
