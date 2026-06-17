@@ -24,7 +24,9 @@ Tel: +81-45-859-1300
 
 **Number of figures.** 6 main + 1 supplementary
 
-**Number of tables.** 3
+**Number of tables.** 2 main + 1 supplementary
+
+**Display items (main figures + main tables).** 8 (6 figures + 2 tables)
 
 **Keywords.** long noncoding RNA; bulk RNA-seq; cell-composition deconvolution; random-effects meta-analysis; partial correlation; effect decomposition.
 
