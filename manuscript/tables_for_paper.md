@@ -43,7 +43,7 @@
 
 ---
 
-## Table 3. Sample-level *IDI2-AS1* ↔ *IL5* association: raw, cell-type-adjusted, and causal mediation
+## Table 3. Sample-level *IDI2-AS1* ↔ *IL5* association: raw, cell-type-adjusted, and mediation-style decomposition
 
 | Cohort | n | **Raw Spearman ρ** | raw *p* | **Partial ρ** (\| eos + Th2) | partial *p* | ACME (eos.) | ACME 95 % CI | ACME *p* | ADE | ADE *p* | Prop. mediated |
 |---|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|:-:|
@@ -52,7 +52,7 @@
 | CRSwNP (GSE136825) | 70 | +0.085 | 0.48 | +0.135 | 0.27 | −0.028 | [−0.086, +0.005] | 0.13 | +0.096 | 0.25 | (n.s.) |
 | Atopic dermatitis (GSE121212) | 65 | +0.060 | 0.63 | +0.010 | 0.94 | +0.054 | [−0.006, +0.170] | 0.10 | −0.033 | 0.78 | (n.s.) |
 
-*Partial Spearman correlation conditions on per-sample eosinophil and Th2 marker-signature scores (`ppcor::pcor.test`). Causal mediation was performed only in the asthma cohort with sufficient power (n = 695); estimates from the smaller cohorts are listed for transparency but are underpowered (n < 100) and should be interpreted as directional only. Bootstrap = 1,000 simulations, percentile CIs, `mediation::mediate`. The 90 % proportion mediated in the asthma cohort means that ≈ 90 % of the apparent IDI2-AS1 → IL5 association is statistically attributable to shared expression in the eosinophil compartment, leaving a within-tissue direct effect indistinguishable from zero (ADE p = 0.76).*
+*Partial Spearman correlation conditions on per-sample eosinophil and Th2 marker-signature scores (`ppcor::pcor.test`). The mediation-style decomposition (`mediation::mediate`, 1,000 nonparametric bootstrap resamples, percentile CIs) was reported only in the asthma cohort with sufficient power (n = 695); estimates from the smaller cohorts are listed for transparency but are underpowered (n < 100) and should be interpreted as directional only. Because the underlying data are cross-sectional observational measurements, the ACME / ADE values describe a statistical decomposition under the assumed mediator–outcome model, not a strict counterfactual causal effect. The 90 % proportion mediated in the asthma cohort means that ≈ 90 % of the apparent IDI2-AS1 ↔ IL5 association is statistically attributable to shared expression in the eosinophil compartment, leaving a within-tissue direct effect indistinguishable from zero (ADE p = 0.76).*
 
 ---
 

@@ -75,7 +75,7 @@ draw_heatmap <- function(mat, title, out_pdf) {
   rng <- min(max(rng, 1), 4)        # clip extreme outliers (e.g. IL13=4.9 in AD)
   col_fun <- colorRamp2(c(-rng, 0, rng), c("#3b82f6", "white", "#dc2626"))
 
-  pdf(out_pdf, width = 7, height = max(2.5, 0.5 * nrow(mat) + 2))
+  pdf(out_pdf, width = 9, height = max(2.5, 0.5 * nrow(mat) + 2))
   draw(Heatmap(
     mat,
     name = "log2FC\n(P vs C)",
@@ -92,7 +92,7 @@ draw_heatmap <- function(mat, title, out_pdf) {
       if (!is.na(v))
         grid.text(sprintf("%.2f", v), x, y, gp = gpar(fontsize = 8))
     }
-  ))
+  ), padding = unit(c(2, 12, 2, 12), "mm"))
   dev.off()
 }
 

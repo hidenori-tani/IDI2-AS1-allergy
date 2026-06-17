@@ -39,7 +39,7 @@ cite_map <- list(
   "Statello et al., 2021"    = "Statello2021_lncRNAfunctions",
   "Cabili et al., 2011"      = "Cabili2011_lincRNAs",
   "Bel et al., 2014"         = "Bel2014_mepolizumab",
-  "Bachert et al., 2017"     = "Bachert2019_mepoCRSwNP",
+  "Bachert et al., 2017"     = "Bachert2017_mepoCRSwNP",
   "Hirano et al., 2019"      = "Hirano2019_EoEbiologic",
   "Lambrecht et al., 2019"   = "Lambrecht2019_type2review",
   "Travaglini et al., 2020"  = "Travaglini2020_lungatlas"
@@ -52,8 +52,13 @@ cite_map <- cite_map[ord]
 
 # Replace each "(Author et al., YYYY)" with "[@bibkey]"
 # Also handle multi-citation parenthetical groups joined by "; "
+# And the narrative form "Author et al. (YYYY)" -> "@bibkey" (renders as "Author et al. (YYYY)" in author-date CSL)
 for (k in names(cite_map)) {
   bk <- cite_map[[k]]
+  # narrative form, e.g. "Endo et al. (2025)" or "Kim (2015)" -> "@bibkey"
+  # Build by stripping the comma-year from the parenthetical key.
+  narrative_pat <- sub(", (20[0-9]{2})$", " \\\\(\\1\\\\)", k)
+  text <- gsub(narrative_pat, paste0("@", bk), text, perl = TRUE)
   # parenthetical, single
   text <- gsub(paste0("\\(", k, "\\)"),
                paste0("[@", bk, "]"), text, fixed = FALSE)
@@ -69,17 +74,22 @@ text <- gsub("\\((@[A-Za-z0-9_]+(?:; @[A-Za-z0-9_]+)*)\\)",
 # Also single "(@key)" -> "[@key]" (catch-all for any leftovers)
 text <- gsub("\\((@[A-Za-z0-9_]+)\\)", "[\\1]", text, perl = TRUE)
 
-# inline narrative form e.g. "Endo et al. (2025)" — convert to "@Endo2025_IDI2AS1 [-@... ]" syntax,
-# but the manuscript does not use that form, so leave it.
+# Sanity-check: any unconverted narrative-form citations left?
+narrative_left <- regmatches(text,
+  gregexpr("[A-Z][a-z]+ et al\\. \\(20[0-9]{2}\\)", text))[[1]]
+if (length(narrative_left) > 0) {
+  cat("WARNING: unconverted narrative-form citations remain:\n")
+  print(unique(narrative_left))
+}
 
 # Add YAML header for pandoc + bibliography metadata
 yaml <- c(
   "---",
-  "title: \"Tissue-bulk transcriptomes mask the IDI2-AS1 -> IL5 axis through eosinophil-composition mediation: a cross-disease re-analysis in four type-2 allergic diseases\"",
+  "title: \"Bulk tissue transcriptomes obscure the IDI2-AS1 / IL5 relationship through cell-composition effects across four type-2 allergic diseases\"",
   "author:",
   "  - Hidenori Tani",
   "bibliography: references.bib",
-  "csl: frontiers.csl",
+  "csl: vancouver-superscript.csl",
   "link-citations: true",
   "---",
   ""

@@ -1,17 +1,24 @@
-# IDI2-AS1-IL5 Cross-Disease Analysis
+# A cell-composition-adjusted re-analysis pipeline for bulk-tissue lncRNA interpretation (IDI2-AS1 / IL5 worked example)
 
-Cross-disease transcriptomic analysis of IDI2-AS1 in IL5-driven allergic diseases.
+A reusable pipeline that separates per-cell regulation from cell-composition shift when interpreting bulk RNA-seq for low-abundance, cell-type-restricted lncRNAs, applied to *IDI2-AS1* (an in vitro repressor of *IL5*) across five public cohorts (n = 856) spanning four type-2 allergic diseases.
 
-- **Target journal**: Frontiers in Immunology
 - **Author**: Hidenori Tani (Yokohama University of Pharmacy)
 - **Companion to**: Endo, Kurisu, Tani (BBRC 2025) — *Long noncoding RNA IDI2-AS1 modulates the expression of interleukin 5 in human cells*
 
-## Diseases analyzed
+## Headline result
 
-1. Asthma (bronchial epithelium)
-2. Atopic dermatitis (skin biopsy)
-3. Eosinophilic esophagitis (esophageal biopsy)
-4. Nasal polyposis / CRSwNP (nasal mucosa)
+Bulk *IDI2-AS1* is invariant across cohorts (pooled log2FC ≈ 0; I² = 0.26 %), yet sample-level *IDI2-AS1*–*IL5* correlation is positive (opposite to the in vitro direction). In the only adequately powered cohort (asthma, n = 695), cell-composition adjustment attributes the majority of that covariation to shared **eosinophil abundance** — **≈ 90 % under a marker signature and ≈ 70 % under independent xCell deconvolution** (concordance ρ = 0.62; both p ≤ 0.006) — with no detectable within-tissue residual. The bulk null is therefore most parsimoniously read as compositional masking, a hypothesis for single-cell follow-up rather than a validated mechanism. The quantitative claim is restricted to asthma; smaller cohorts are directionally consistent but underpowered.
+
+## Diseases / cohorts analyzed
+
+1. Asthma — GSE152004 (nasal epithelium, n = 695)
+2. Atopic dermatitis — GSE121212 (skin biopsy, n = 65)
+3. Eosinophilic esophagitis — GSE58640 (n = 16) and GSE246323 (n = 10)
+4. Nasal polyposis / CRSwNP — GSE136825 (nasal polyp, n = 70)
+
+## Pipeline (code/R)
+
+DESeq2/limma differential expression → random-effects meta-analysis (metafor) → sample-level Spearman correlation → cell-composition-adjusted partial correlation → bootstrap effect decomposition (a statistical, not causal, partition). Eosinophil abundance is estimated both by a marker-gene signature and, independently, by xCell deconvolution (`12_xcell_deconvolution.R`), with a spillover-floor diagnostic (`12b`), a validation figure (`13`), and an unmeasured-confounding sensitivity analysis (`14_mediation_sensitivity.R`, medsens).
 
 ## Documents
 
