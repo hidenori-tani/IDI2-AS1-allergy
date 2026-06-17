@@ -9,7 +9,7 @@
 #
 #  A  Concordance: 7-gene marker z-score vs xCell raw enrichment (asthma)
 #  B  Partial-correlation attenuation under each estimator, all cohorts
-#  C  Mediation proportion (bootstrap CI) under each estimator, asthma
+#  C  Eosinophil-attributable component (bootstrap CI) under each estimator, asthma
 #  D  Spillover floor: compensated vs raw eosinophil estimate (asthma)
 # ============================================================
 
@@ -72,11 +72,11 @@ c_df <- med %>% filter(dataset == "GSE152004") %>%
 pC <- ggplot(c_df, aes(estimator, ACME, colour = sig)) +
   geom_hline(yintercept = 0, linewidth = 0.3, colour = "grey50") +
   geom_pointrange(aes(ymin = lo, ymax = hi), linewidth = 0.7, size = 0.5) +
-  geom_text(aes(label = sprintf("%.0f%% med.", 100 * prop)),
+  geom_text(aes(label = sprintf("%.0f%% attrib.", 100 * prop)),
             vjust = -1.1, size = 2.8, show.legend = FALSE) +
   scale_colour_manual(values = c("p < 0.05" = "#1f78b4", "n.s." = "#e31a1c")) +
-  labs(x = NULL, y = "ACME (eosinophil-mediated effect)",
-       title = "C  Mediation of IDI2-AS1->IL5 via eosinophils\n   (asthma, n = 695; bootstrap 95% CI)") +
+  labs(x = NULL, y = "Composition-attributable component",
+       title = "C  Eosinophil-attributable component of IDI2-AS1-IL5\n   (asthma, n = 695; bootstrap decomposition, 95% CI)") +
   base
 
 # ---- D: spillover floor - compensated vs raw (asthma) ----
