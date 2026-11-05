@@ -1,0 +1,34 @@
+Package: bulkmask
+Title: Composition-Adjusted Analysis of Gene-Pair Associations in Bulk RNA-seq
+Version: 0.1.0
+Authors@R:
+    person("Hidenori", "Tani", email = "hidenori.tani@yok.hamayaku.ac.jp",
+           role = c("aut", "cre"), comment = c(ORCID = "0000-0001-6390-4136"))
+Description: A parameterised, reusable pipeline for interpreting bulk-tissue
+    RNA-seq when the association between a low-abundance, cell-type-restricted
+    regulator and its target may be dominated by shifts in cell composition.
+    Given an arbitrary count (or FPKM) matrix, an exposure/outcome gene pair,
+    and one or more cell-type marker signatures, the package provides (i)
+    per-cohort differential expression (run_de(), DESeq2 with apeglm shrinkage
+    or limma-trend; run separately from the pipeline) and a random-effects
+    (REML) helper, run_meta(), meant for unshrunken estimates rather than the
+    apeglm posterior SDs that run_de() returns for counts; its pipeline runs
+    (ii) effector-cell abundance estimation by marker score, xCell raw
+    enrichment, and GSVA ssGSEA of the same markers, (iii) partial correlation
+    conditioned on the composition estimate(s) and optional nuisance covariates,
+    and (iv) a bootstrap decomposition of the observed association into
+    composition-associated and residual components (a statistical partition
+    under a linear model, not a causal effect). IDI2-AS1 / IL5 across five
+    type-2 allergic-disease cohorts is shipped as a worked configuration.
+License: MIT + file LICENSE
+Encoding: UTF-8
+Depends: R (>= 4.2)
+Imports:
+    stats, utils, methods,
+    SummarizedExperiment, DESeq2, limma, apeglm, metafor, ppcor, mediation,
+    xCell, GSVA, GSEABase, ensembldb, EnsDb.Hsapiens.v86,
+    matrixStats, yaml
+Suggests: testthat (>= 3.0.0), knitr, rmarkdown, biomaRt
+Remotes: dviraran/xCell
+VignetteBuilder: knitr
+RoxygenNote: 7.3.1

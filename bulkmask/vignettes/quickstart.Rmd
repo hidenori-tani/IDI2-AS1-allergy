@@ -1,0 +1,80 @@
+---
+title: "bulkmask quick start: composition-adjusted association on a synthetic dataset"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{bulkmask quick start}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+```
+
+## The problem in one synthetic cohort
+
+`bulkmask` reports how much of a bulk RNA-seq association between two genes is
+shared with an estimated cell compartment. It does not test per-cell regulation,
+which requires cell-resolved data. This vignette needs no external data: we simulate a cohort
+in which a rare effector compartment (think eosinophils) drives a positive bulk
+correlation between an exposure gene and an outcome gene, even though there is no
+direct per-cell link.
+
+```{r load}
+# devtools::load_all("bulkmask")  # during development
+library(bulkmask)
+set.seed(42)
+
+n        <- 400
+compart  <- rnorm(n)                       # latent effector-cell abundance
+exposure <- 0.9 * compart + rnorm(n, sd = 0.6)
+outcome  <- 0.9 * compart + rnorm(n, sd = 0.6)   # no direct exposure->outcome link
+group    <- as.integer(compart > 0)        # "disease" expands the compartment
+```
+
+## Step 3: composition-adjusted partial correlation
+
+```{r partial}
+raw <- partial_corr(exposure, outcome)                       # ordinary Spearman
+adj <- partial_corr(exposure, outcome, list(eos = compart))  # condition on compartment
+c(raw_rho = raw$rho, raw_p = raw$p)
+c(adj_rho = adj$rho, adj_p = adj$p)
+```
+
+The positive raw association collapses once we condition on the compartment, as
+expected here: the simulated association is carried entirely by the compartment.
+
+## Step 4: bootstrap decomposition
+
+```{r decompose}
+d   <- data.frame(exposure, outcome, med = compart, group_bin = group)
+dec <- decompose_association(d, "exposure", "med", "outcome", R = 500)
+dec[, c("ACME", "ACME_p", "ADE", "ADE_p", "total_effect", "prop_mediated")]
+```
+
+`prop_mediated` near 1 with a residual (`ADE`) indistinguishable from zero means
+the bulk association is almost entirely *composition-associated*. Add a nuisance
+covariate (e.g. case/control status) with `covariates = "group_bin"`.
+
+```{r decompose-adj}
+decg <- decompose_association(d, "exposure", "med", "outcome",
+                              covariates = "group_bin", R = 500)
+decg[, c("ACME", "ADE", "prop_mediated", "covariates")]
+```
+
+## Applying it to your own data
+
+Copy `inst/config/idi2as1_il5.yml`; set `exposure` and `exposure_ensembl`,
+`outcome` and `outcome_ensembl`, the marker `signatures` with their
+`ensembl_aliases`, `mediator_signature` and `deconvolution: xcell_cell_type` for
+your compartment, and the `cohorts`. Then run steps 2–4 with `prepare_cohort()` +
+`analyse_cohort()` (see `scripts/run_bulkmask_pipeline.R`); step 1 (`run_de()`)
+is run separately. Count cohorts are length-normalised to TPM for the
+deconvolution input. The mediator compartment is estimated three ways (marker
+z-score, xCell raw enrichment, GSVA ssGSEA of the same markers). They are not
+independent — two share the marker genes and xCell shares some of them — so
+their agreement tests robustness to the summarization more than to the choice
+of genes.
+
+> All effects are reported as a **statistical partition under a linear model on
+> cross-sectional data, not a causal effect.**

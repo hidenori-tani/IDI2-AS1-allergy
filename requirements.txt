@@ -1,0 +1,11 @@
+pandas>=2.0
+numpy
+scipy
+matplotlib
+seaborn
+jupyter
+GEOparse
+pyranges
+requests
+statsmodels
+PyMuPDF

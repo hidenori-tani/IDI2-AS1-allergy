@@ -1,0 +1,21 @@
+# Generated/maintained by hand (roxygen-compatible export list).
+export(gene_lengths_ensdb)
+export(counts_to_cpm)
+export(counts_to_tpm)
+export(strip_ens_version)
+export(resolve_genes)
+export(score_signature)
+export(estimate_xcell)
+export(estimate_gsva_ssgsea)
+export(partial_corr)
+export(decompose_association)
+export(run_meta)
+export(run_de)
+export(read_config)
+export(check_ensembl_aliases)
+export(prepare_cohort)
+export(analyse_cohort)
+
+importFrom(stats, as.formula, complete.cases, cor.test, lm, model.matrix,
+           relevel, sd, setNames)
+importFrom(utils, read.csv, tail)

@@ -1,0 +1,6 @@
+Positive control: 24 published conditioned correlations reproduced (max |d rho| = 5.00e-16).
+(1) Table 2A intervals: B = 10000 percentile bootstrap (seed 20261105) + Fisher z.
+(2) Estimator comparison written (concordance, compensated-xCell zeros, partial rho, proportion).
+(3) Type-2 conditioning written (none / eos / th2 / eos+th2 / neutrophil).
+(4) BH per question family (raw: 4 cohorts; asthma components: 3 estimates) and over the 28-test grid.
+(5) Meta-analysis reproduced (REML as metafor's defaults: Fisher scoring, change in tau2 < 1e-5), refitted at the REML likelihood maximum, and re-weighted (HKSJ, equal, sample-size, leave-one-out, Stouffer).

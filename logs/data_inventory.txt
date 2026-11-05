@@ -1,0 +1,13 @@
+# Files in data/raw/ after the download of 2026-04-18 (not in the repository;
+# code/R/03_download_all_datasets.R downloads them). Size as listed by the file system.
+data/raw/GSE121212/GSE121212_readcount.txt.gz                 5.4M
+data/raw/GSE136825/GSE136825_genecounts_20190903.txt.gz       7.5M
+data/raw/GSE152004/GSE152004_695_expr_norm.txt.gz             108M
+data/raw/GSE152004/GSE152004_695_raw_counts.txt.gz            22M
+data/raw/GSE179269/GSE179269_RAW.tar                          289M
+data/raw/GSE201955/GSE201955_RNAseq_118_processeddata.txt.gz  12M
+data/raw/GSE246323/GSE246323_Kleuskens_RNAseq_FPKM.txt.gz     2.6M
+data/raw/GSE246323/GSE246323_Kleuskens_RNAseq_readcounts.txt.gz  831K
+data/raw/GSE58640/GSE58640_RNAseq_processed_GEOsubmission.txt.gz 1.6M
+data/raw/GSE65832/GSE65832_RNASeqMappingCounts.txt.gz         901B
+data/raw/GSE65832/GSE65832_TableSeqGenes.txt.gz               2.5M

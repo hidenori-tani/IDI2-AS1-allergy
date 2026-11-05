@@ -1,0 +1,73 @@
+# bulkmask worked configuration: IDI2-AS1 / IL5 across type-2 allergic diseases
+# Edit `exposure`/`exposure_ensembl`, `outcome`/`outcome_ensembl`, `signatures`
+# (with their `ensembl_aliases`), `mediator_signature`, `deconvolution:
+# xcell_cell_type` and `cohorts` to apply the pipeline to a different candidate
+# lncRNA, target, effector compartment, and datasets.
+
+exposure: IDI2-AS1
+exposure_ensembl: ENSG00000232656
+outcome: IL5
+outcome_ensembl: ENSG00000113525
+
+# Cell-composition signatures. The mediator_signature is the compartment the
+# composition adjustment conditions on; every signature gets a marker score.
+# Two names are special: a signature named exactly `th2` adds the model that
+# conditions on the mediator and Th2 (adj_marker+th2), and one named exactly
+# `neutrophil` adds the negative-control model (adj_neutrophil(neg.ctrl)).
+mediator_signature: eosinophil
+signatures:
+  eosinophil: [CLC, EPX, PRG2, RNASE2, RNASE3, SIGLEC8, CCR3]
+  th2:        [GATA3, IL4R, CCR4, PTGDR2, IL13, IL17RB]
+  neutrophil: [FCGR3B, CSF3R, FFAR2, CXCR2, S100A12, CEACAM3]   # negative control
+
+# Ensembl aliases so symbol-named markers also resolve in Ensembl-keyed matrices.
+# Every signature gene needs one: until 2026-11-05 only the eosinophil markers
+# were listed, so th2 and neutrophil resolved no genes (all NA) in GSE136825.
+# read_config() stops if a signature gene has no alias, or if an alias,
+# exposure_ensembl or outcome_ensembl is absent from ens2sym_file or maps to
+# another symbol there. These checks apply when an Ensembl-keyed cohort is
+# configured; ens2sym_file is read relative to the working directory (run from
+# the repository root), and read_config() also stops if it is not found.
+ensembl_aliases:
+  CLC: ENSG00000105205
+  EPX: ENSG00000121053
+  PRG2: ENSG00000186652
+  RNASE2: ENSG00000169385
+  RNASE3: ENSG00000169397
+  SIGLEC8: ENSG00000105366
+  CCR3: ENSG00000183625
+  GATA3: ENSG00000107485
+  IL4R: ENSG00000077238
+  CCR4: ENSG00000183813
+  PTGDR2: ENSG00000183134
+  IL13: ENSG00000169194
+  IL17RB: ENSG00000056736
+  FCGR3B: ENSG00000162747
+  CSF3R: ENSG00000119535
+  FFAR2: ENSG00000126262
+  CXCR2: ENSG00000180871
+  S100A12: ENSG00000163221
+  CEACAM3: ENSG00000170956
+
+deconvolution:
+  xcell_cell_type: Eosinophils
+  use_raw_enrichment: true          # not read: both the raw and the compensated xCell score are computed
+  input_normalization: tpm          # count cohorts: tpm, or any other value for DESeq2-normalized counts;
+                                    # FPKM cohorts always use FPKM
+  gsva_method: ssgsea               # not read: ssGSEA of the mediator markers is always computed
+
+bootstrap:
+  R: 10000                          # 10,000 resamples for stable p/CI
+
+adjust_for_group: true              # also condition on case/control status
+
+ens2sym_file: data/metadata/ensembl_to_symbol.csv
+
+# The driver reads id, disease (for its log) and id_type; type and powered are
+# labels for the reader (the assay of each SummarizedExperiment sets the type).
+cohorts:
+  - { id: GSE152004, disease: asthma,                 id_type: symbol,  type: counts, powered: true }
+  - { id: GSE121212, disease: atopic_dermatitis,      id_type: symbol,  type: counts, powered: false }
+  - { id: GSE246323, disease: eosinophilic_esophagitis, id_type: ensembl, type: counts, powered: false }
+  - { id: GSE58640,  disease: eosinophilic_esophagitis, id_type: symbol, type: fpkm,   powered: false }
+  - { id: GSE136825, disease: crswnp,                 id_type: ensembl, type: counts, powered: false }
